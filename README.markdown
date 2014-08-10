@@ -12,16 +12,17 @@ BTW: I've only tested this in bash.
 Wherever you choose to download or clone the muxy project. Make sure that
 you load it in whichever script is called when you start a teminal session.
 
-OSX users will find the `~/.bash_profile` the place to be, unless you've
+OSX users will find the ```~/.bash_profile``` the place to be, unless you've
 changed your default shell in which case you should know where to find it.
-Linux users will most likely find the `~/.bashrc` to place to be, unless
+Linux users will most likely find the ```~/.bashrc``` to place to be, unless
 they too are using another shell (in which case, they too should know where
 to find the right script).
 Mind you that I have only tried muxy in bash.
 
 Simply load muxy by adding the following line to the loading script
+
 ```
-#bin/bash
+#/bin/bash
 PATH_TO_MUXY=/Home/yoda/.muxy # you decide ;)
 source $PATH_TO_MUXY/muxy.bash
 ```
@@ -39,6 +40,7 @@ These directories should contains the following files:
 
 When looking into the muxy directory your structure should bear some 
 similarities to the following example.
+
 ```
 .
 ├── README.markdown
@@ -72,12 +74,12 @@ to choose from:
 3) lame_project
 #?
 ```
+
 Typing 1 and pressing enter will source the ```base.bash``` from the 
 ```awesome_project``` subdirectory followed by the ```up.bash``` script from the
 ```awesome_project``` subdirectory.
 
-Unloading works in a similar fashion but calls ```down.bash``` instead of 
-```up.bash```.
+Unloading works in a similar fashion but calls ```down.bash``` instead of ```up.bash```.
 
 Because ```base.bash``` is always called first it is a very convenient place
 to define variables that you may need to both load and unload projects :wink:.
