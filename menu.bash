@@ -8,10 +8,10 @@ if [ -z $1 ]; then # first argument is nil
     else
       echo "opt is $opt"
       project="$PROJECTS_PATH/$opt"
-      if [ -e "$project/$target" ] && [ -s "$file/$target" ]; then
+      if [ -e "$project/$target" ] && [ -s "$project/$target" ]; then
         break
       else
-        echo "Make sure there is something to load in $file/$target"
+        echo "Make sure there is something to load in $project/$target"
       fi
     fi
   done

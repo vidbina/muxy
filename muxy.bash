@@ -7,53 +7,29 @@ OPTIONS=$(sed "s:$PROJECTS_PATH/\([a-zA-Z0-9_-]*\)/:\1:g" <<< $PROJECTS);
 
 function load
 {
-  if [ -e "$MUXY_PATH/settings.bash" ]; then
-    source "$MUXY_PATH/settings.bash"
-  fi
-  if [ -z $1 ]; then # first argument is nil
-    select opt in $OPTIONS; do # present menu
-      if [ -z $opt ]; then
-        echo "Please specify the number of the project to load"
-      else
-        echo "opt is $opt"
-        file="$PROJECTS_PATH/$opt"
-        if [ -e "$file/up$EXT" ] && [ -s "$file/up$EXT" ]; then
-          source "$file/base$EXT"
-          source "$file/up$EXT"
-          break
-        else
-          echo "Make sure there is something to load in $file/up$EXT"
-        fi
-      fi
-    done
-  else # first argument is give, so load project is exists
-    echo "Not yet implemented"
+  setup="base$EXT"
+  target="up$EXT"
+  source "$MUXY_PATH/menu.bash"
+
+  if [ -e "$project/$target" ] && [ -s "$project/$target" ]; then
+    source "$project/$setup"
+    source "$project/$target"
+  else
+    echo "Make sure there is something to load in $project/$target"
   fi
 }
 
 function unload
 {
-  if [ -e "$MUXY_PATH/settings.bash" ]; then
-    source "$MUXY_PATH/settings.bash"
-  fi
-  if [ -z $1 ]; then # first argument is nil
-    select opt in $OPTIONS; do # present menu
-      if [ -z $opt ]; then
-        echo "Please specify the number of the project to unload"
-      else
-        echo "opt is $opt"
-        file="$PROJECTS_PATH/$opt"
-        if [ -e "$file/down$EXT" ] && [ -s "$file/down$EXT" ]; then
-          source "$file/base$EXT"
-          source "$file/down$EXT"
-          break
-        else
-          echo "Make sure there is something to unload in $file/down$EXT"
-        fi
-      fi
-    done
-  else # first argument is give, so load project is exists
-    echo "Not yet implemented"
+  setup="base$EXT"
+  target="down$EXT"
+  source "$MUXY_PATH/menu.bash"
+
+  if [ -e "$project/$target" ] && [ -s "$project/$target" ]; then
+    source "$project/$setup"
+    source "$project/$target"
+  else
+    echo "Make sure there is something to unload in $project/$target"
   fi
 }
 
@@ -61,8 +37,6 @@ function muxify
 {
   target=""
   source "$MUXY_PATH/menu.bash"
-
-  echo "chosen is $project"
 
   if [ -e "$project" ]; then
     $EDITOR $project
