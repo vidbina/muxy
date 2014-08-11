@@ -56,3 +56,17 @@ function unload
     echo "Not yet implemented"
   fi
 }
+
+function muxify
+{
+  target=""
+  source "$MUXY_PATH/menu.bash"
+
+  echo "chosen is $project"
+
+  if [ -e "$project" ]; then
+    $EDITOR $project
+  else
+    echo "muxification not possible"
+  fi
+}
