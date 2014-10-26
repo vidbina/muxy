@@ -2,8 +2,6 @@ EXT=".bash"
   
 MUXY_PATH="$HOME/.bin/muxy"
 PROJECTS_PATH="$MUXY_PATH"
-PROJECTS=$( ls -d $PROJECTS_PATH/*/ )
-OPTIONS=$(sed "s:$PROJECTS_PATH/\([a-zA-Z0-9_-]*\)/:\1:g" <<< $PROJECTS);
 
 function load
 {
