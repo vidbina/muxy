@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 EXT=".bash"
   
 MUXY_PATH="$HOME/.bin/muxy"

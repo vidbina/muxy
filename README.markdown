@@ -84,6 +84,10 @@ Unloading works in a similar fashion but calls ```down.bash``` instead of ```up.
 Because ```base.bash``` is always called first it is a very convenient place
 to define variables that you may need to both load and unload projects :wink:.
 
+To make things significantly easier one may choose to use the ```muxify``` 
+command. Currently the muxify command will only load the files you need to get 
+started.
+
 ### Base
 The optional ```base.bash``` file for a project can simply contain a few
 variable definitions and some other helpers to be used trying to setup or 
