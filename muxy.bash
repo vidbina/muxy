@@ -2,7 +2,7 @@
 EXT=".bash"
   
 MUXY_PATH="$HOME/.bin/muxy"
-PROJECTS_PATH="$MUXY_PATH"
+PROJECTS_PATH="$MUXY_PATH/projects"
 EDITOR=vim
 
 function load
