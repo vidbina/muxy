@@ -116,6 +116,11 @@ the source files I need in my editor of choice (vim, not that its relevant
 ```
 #/bin/bash
 cd $BASE
+
+# Use optional SESSION_STARTUP_SCRIPT if you want some logic executed in every
+# session
+export SESSION_STARTUP_SCRIPT="/path/startup.zsh"
+
 tmux start-server
 
 # Create 3 windows in tmux named git, base and playground
@@ -130,6 +135,17 @@ tmux send-keys -t $NAME:10 "git status" C-m
 
 # List all directories in the base window before I get to editing
 tmux send-keys -t $NAME:1 "ls" C-m
+```
+
+If the `SESSION_STARTUP_SCRIPT` variable is used, make sure to source the
+script from the variable in the appropriate profile file (.e.g.: for Zsh being 
+`~/.zprofile`).
+
+```zsh
+# add this to ~/.zprofile in case Zsh is used
+if [[ -a $SESSION_STARTUP_SCRIPT ]]; then
+  source $SESSION_STARTUP_SCRIPT
+fi
 ```
 
 ### Down
